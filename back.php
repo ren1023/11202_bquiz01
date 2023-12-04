@@ -16,14 +16,14 @@
 	<div id="cover" style="display:none; ">
 		<div id="coverr">
 			<a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
-				onclick="cl(&#39;#cover&#39;)">X</a>
+				onclick="cl('#cover')">X</a>
 			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
 		</div>
 	</div>
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 		<a title="" href="?">
-			<div class="ti" style="background:url (&#39;use/&#39;); background-size:cover;"></div><!-- 標題 -->
+			<div class="ti" style="background:url ('use/'); background-size:cover;"></div><!-- 標題 -->
 		</a>
 		<div id="ms">
 			<div id="lf" style="float:left;">
@@ -84,7 +84,7 @@
 							<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;"
 								class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;"> 後台管理區 </a>
 							</td>
-							<td><button onclick="document.cookie=&#39;user=&#39;;location.replace(&#39;?&#39;)"
+							<td><button onclick="document.cookie='user=';location.replace('?')"
 									style="width:99%; margin-right:2px; height:50px;"> 管理登出 </button></td>
 						</tr>
 					</tbody>
@@ -107,7 +107,7 @@
 							<tbody>
 								<tr>
 									<td width="200px"><input type="button"
-											onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;view.php?do=title&#39;)"
+											onclick="op('#cover','#cvr','view.php?do=title')"
 											value="新增網站標題圖片"></td>
 									<td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置">
 									</td>
