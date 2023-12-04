@@ -20,13 +20,12 @@ function lo(x)
 function op(x,y,url)
 {
 	$(x).fadeIn()
-	if (y)// 如果 Y 有值，則 fadeIn 淡入
+	if(y)
 	$(y).fadeIn()
-	if (y&&url)// 如果 Y 和 url 有值，則載入 url 網址 view.php
+	if(y&&url)
 	$(y).load(url)
 }
-// close, 
 function cl(x)
 {
-	$(x).fadeOut ();//$ 相當於 jquery，fadeout => 淡出
+	$(x).fadeOut();
 }
