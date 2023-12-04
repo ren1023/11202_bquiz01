@@ -92,7 +92,7 @@
 				<!--  -->
 				<?php
 			//判斷是否有do的存在，如果沒有的話就是main。 
-			// $do=(isset($_GET['do']))?$_GET['do']:'main';
+			// $do=(isset($_GET['do']))?$_GET['do']:'title';
 			$do=$_GET['do']??'title';
 			$file="./back/{$do}.php";
 			if(file_exists($file)){  //判斷檔案是否存在，來決定引入的東西
