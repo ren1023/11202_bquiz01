@@ -35,7 +35,19 @@
 				</div>
 			</div>
 <!-- <div class="di" -->
-			<?php include "./front/main.php";?>
+			<?php //include "./front/main.php";?>
+			<?php
+			//判斷是否有do的存在，如果沒有的話就是main。 
+			// $do=(isset($_GET['do']))?$_GET['do']:'main';
+			$do=$_GET['do']??'main';
+			$file="./front/{$do}.php";
+			if(file_exists($file)){  //判斷檔案是否存在，來決定引入的東西
+				include $file;
+			}else{
+				include "./front/main.php";
+			}
+
+			?>;
 			<div id="alt" style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
 			<script>
 				$(".sswww").hover(
