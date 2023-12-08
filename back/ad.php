@@ -24,7 +24,6 @@
                             <input type="checkbox" name="del[]" value="<?=$row['id']; ?>">
                         </td>
 
-                        </td>
                     </tr>
                 <?php
                 }
