@@ -16,7 +16,8 @@
             <tbody>
                 <tr>
                     <input type="hidden" name="table" value="<?=$do;?>">
-                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','view.php?do=title')" value="新增網站標題圖片"></td>
+                   <!--  經由click事件，開啟 ./modal/"$do的網頁，並將值(table=$do)傳出去後，由_GET接收 -->
+                    <td width="200px"><input type="button" onclick="op('#cover','#cvr','./modal/<?=$do;?>.php?table=<?=$do;?>')" value="新增網站標題圖片"></td>
                     <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
                 </tr>
             </tbody>
