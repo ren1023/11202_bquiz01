@@ -4,12 +4,14 @@ session_start();
 class DB{
 
     protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db20";
+    //protected $dsn = "mysql:host=localhost;charset=utf8;dbname=bquiz";
     protected $pdo;
     protected $table;
     
     public function __construct($table)
     {
         $this->table=$table;
+        //$this->pdo=new PDO($this->dsn,'s1120401','s1120401');
         $this->pdo=new PDO($this->dsn,'root','');
     }
 
@@ -21,27 +23,25 @@ class DB{
         return  $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // function count( $where = '', $other = ''){
-    //     $sql = "select count(*) from `$this->table` ";
-    //     $sql=$this->sql_all($sql,$where,$other);
-    //     return  $this->pdo->query($sql)->fetchColumn(); 
-    // }
-    
+    function count( $where = '', $other = ''){
+        $sql = "select count(*) from `$this->table` ";
+        $sql=$this->sql_all($sql,$where,$other);
+        return  $this->pdo->query($sql)->fetchColumn(); 
+    }
     private function math($math,$col,$array='',$other=''){
         $sql="select $math(`$col`)  from `$this->table` ";
         $sql=$this->sql_all($sql,$array,$other);
         return $this->pdo->query($sql)->fetchColumn();
     }
-    
-    // function sum($col='', $where = '', $other = ''){
-    //     return  $this->math('sum',$col,$where,$other);
-    // }
-    // function max($col, $where = '', $other = ''){
-    //     return  $this->math('max',$col,$where,$other);
-    // }  
-    // function min($col, $where = '', $other = ''){
-    //     return  $this->math('min',$col,$where,$other);
-    // }  
+    function sum($col='', $where = '', $other = ''){
+        return  $this->math('sum',$col,$where,$other);
+    }
+    function max($col, $where = '', $other = ''){
+        return  $this->math('max',$col,$where,$other);
+    }  
+    function min($col, $where = '', $other = ''){
+        return  $this->math('min',$col,$where,$other);
+    }  
     
     function find($id)
     {
@@ -52,9 +52,7 @@ class DB{
             $sql .= " where " . join(" && ", $tmp);
         } else if (is_numeric($id)) {
             $sql .= " where `id`='$id'";
-        } else {
-            echo "錯誤：參數的資料型態比須是數字或陣列";
-        }
+        } 
         //echo 'find=>'.$sql;
         $row = $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
         return $row;
@@ -66,9 +64,7 @@ class DB{
     
             if (!empty($array)) {
                 $tmp = $this->a2s($array);
-            } else {
-                echo "錯誤：缺少要編輯的欄位陣列";
-            }
+            } 
         
             $sql .= join(",", $tmp);
             $sql .= " where `id`='{$array['id']}'";
@@ -92,16 +88,14 @@ class DB{
             $sql .= join(" && ", $tmp);
         } else if (is_numeric($id)) {
             $sql .= " `id`='$id'";
-        } else {
-            echo "錯誤：參數的資料型態比須是數字或陣列";
-        }
+        } 
         //echo $sql;
     
         return $this->pdo->exec($sql);
     }
     
     /**
-     * 可輸入各式 SQL 語法字串並直接執行
+     * 可輸入各式SQL語法字串並直接執行
      */
     function q($sql){
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -133,9 +127,7 @@ class DB{
             // echo 'all=>'.$sql;
             // $rows = $this->pdo->query($sql)->fetchColumn();
             return $sql;
-        } else {
-            echo "錯誤：沒有指定的資料表名稱";
-        }
+        } 
     }
 
 }
@@ -146,12 +138,10 @@ function dd($array)
     print_r($array);
     echo "</pre>";
 }
-
-
 function to($url){
     header("location:$url");
 }
 
 $Title=new DB('titles');
-
+$Total=new DB('total');
 ?>

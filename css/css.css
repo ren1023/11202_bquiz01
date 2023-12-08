@@ -93,7 +93,7 @@ body
 }
 .mainmu2:hover
 {
-	background:url(icon/menu4.fw.png) center no-repeat;
+	background:url(../icon/menu4.fw.png) center no-repeat;
 	background-size:cover;
 }
 #lf
