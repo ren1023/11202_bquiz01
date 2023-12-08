@@ -16,6 +16,8 @@ if(isset($_FILES['img']['tmp_name'])){
 
 }
 
+$_POST['table']=($table=='title')?0:1;
+
 // 從post來有多了一個欄位！會與資料表對不上，故要將hidden的table的這個欄位刪除(unset)。
 unset($_POST['table']);
 $DB->save($_POST);

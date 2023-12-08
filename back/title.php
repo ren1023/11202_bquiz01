@@ -21,19 +21,16 @@
                             <img src="./img/<?= $row['img']; ?>" style="width:300px;height:30px;">
                         </td>
                         <td width="23%">
-                            <input type="text" name="text[<?= $row['id']; ?>]" style="width: 90%;" value="<?= $row['text']; ?>">
-                            <!-- <input type="text" name="text[<?=$row['id'];?>]" style="width:90%" value="<?=$row['text'];?>"> -->
-
-                            <!-- <input type="hidden" name="id[]" > -->
+                            <input type="text" name="text[<?=$row['id'];?>]" style="width: 90%;" value="<?= $row['text'];?>">
                         </td>
                         <td width="7%">
-                            <input type="radio" name="sh" value="<?=$row['id']; ?>" <?=($row['sh']==1)?'checked':'';?>>
+                            <input type="radio" name="sh" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
                         </td>
                         <td width="7%">
-                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                            <input type="checkbox" name="del[]" value="<?=$row['id']; ?>">
                         </td>
                         <td>
-                            <input type="button" onclick="op('#cover','#cvr','./modal/upload.php?table=<?= $do; ?>&id=<?= $row['id']; ?>')" value="更新圖片">
+                            <input type="button" onclick="op('#cover','#cvr','./modal/upload.php?table=<?= $do; ?>&id=<?=$row['id']; ?>')" value="更新圖片">
                         </td>
                         </td>
                     </tr>
