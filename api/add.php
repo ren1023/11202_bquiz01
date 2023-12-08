@@ -23,7 +23,6 @@ $DB->save($_POST);
 // echo "test";
 // exit();
 
-
 to("../back.php?do=$table");
 
 ?>
