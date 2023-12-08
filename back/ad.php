@@ -12,10 +12,8 @@
                   <?php
                 $rows = $Ad->all();
                 foreach ($rows as $row) {
-
                 ?>
                     <tr>
-
                         <td >
                             <input type="text" name="text[<?=$row['id'];?>]" style="width:90%;" value="<?= $row['text'];?>">
                         </td>
@@ -25,16 +23,13 @@
                         <td >
                             <input type="checkbox" name="del[]" value="<?=$row['id']; ?>">
                         </td>
-                        <!-- <td>
-                            <input type="button" onclick="op('#cover','#cvr','./modal/upload.php?table=<?= $do; ?>&id=<?=$row['id']; ?>')" value="更新圖片">
-                        </td> -->
+
                         </td>
                     </tr>
                 <?php
                 }
                 ?>
             </tbody>
-               
             </tbody>
         </table>
         <table style="margin-top:40px; width:70%;">
@@ -47,6 +42,5 @@
                 </tr>
             </tbody>
         </table>
-
     </form>
 </div>
