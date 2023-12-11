@@ -11,7 +11,8 @@
                 </tr>
                 <!-- 將資料顯示在畫面上 -->
                 <?php
-                $rows = $Mvim->all();
+                // $DB=${ucfirst($do)};
+                $rows = $DB->all();
                 foreach ($rows as $row) {
 
                 ?>
