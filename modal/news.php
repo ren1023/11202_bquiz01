@@ -7,10 +7,10 @@
         <tr>
             <td>最新消息資料</td>
             <td>
+                <!-- textarea這個tag，不要有斷行，若斷行會造成不必要的空白 -->
                 <textarea type="text" name="text" style="width:300px;height:150px;"></textarea>
             </td>
         </tr>
-       
     </table>
 
     <div>
