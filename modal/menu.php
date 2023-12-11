@@ -16,9 +16,7 @@
                 <input type="text" name="href" id="">
             </td>
         </tr>
-      
     </table>
-
     <div>
         <input type="hidden" name="table" value="<?= $_GET['table']; ?>">
         <input type="submit" value="新增">

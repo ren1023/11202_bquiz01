@@ -13,12 +13,8 @@
             <td><input type="text" name="text[]" id=""></td>
             <td><input type="text" name="href[]" id=""></td>
             <td><input type="checkbox" name="del[]" id=""></td>
-            
-            
         </tr>
-
     </table>
-
     <div>
         <input type="hidden" name="table" value="<?= $_GET['table']; ?>">
         <input type="submit" value="編輯">

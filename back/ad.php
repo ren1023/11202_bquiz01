@@ -1,6 +1,6 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli">動態文字廣告管理</p>
-    <form method="post" action="./api/edit.php">  <!-- ?表示是當前的檔案 -->
+    <form method="post" action="./api/edit.php"> <!-- ?表示是當前的檔案 -->
         <table width="100%" style="text-align: center;">
             <tbody>
                 <tr class="yel">
@@ -8,21 +8,21 @@
                     <td width="10%">顯示</td>
                     <td width="10%">刪除</td>
                 </tr>
-                  <!-- 將資料顯示在畫面上 -->
-                  <?php
+                <!-- 將資料顯示在畫面上 -->
+                <?php
                 $rows = $Ad->all();
                 foreach ($rows as $row) {
                 ?>
                     <tr>
-                        <td >
-                            <input type="text" name="text[]" style="width:90%;" value="<?= $row['text'];?>">
-                            <input type="hidden" name="id[]" value="<?=$row['id'];?>">
+                        <td>
+                            <input type="text" name="text[]" style="width:90%;" value="<?= $row['text']; ?>">
+                            <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
                         </td>
-                        <td >
-                            <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
+                        <td>
+                            <input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : ''; ?>>
                         </td>
-                        <td >
-                            <input type="checkbox" name="del[]" value="<?=$row['id']; ?>">
+                        <td>
+                            <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
                         </td>
                     </tr>
                 <?php
