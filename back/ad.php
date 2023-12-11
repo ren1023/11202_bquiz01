@@ -10,7 +10,7 @@
                 </tr>
                 <!-- 將資料顯示在畫面上 -->
                 <?php
-                $rows = $Ad->all();
+                $rows = $DB->all();
                 foreach ($rows as $row) {
                 ?>
                     <tr>

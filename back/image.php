@@ -12,12 +12,14 @@
                 <?php
                 // $DB=${ucfirst($do)};改寫在db.php裡
                 // $rows = $DB->all();
-                $total = $DB->count(); /*處理分頁問題 _start*/
-                $div = 3;
-                $pages = ceil($total / $div);
-                $now = $_GET['p'] ?? 1;
-                $start = ($now - 1) * $div;
-                $rows = $DB->all("limit $start,$div");  /*處理分頁問題 _end*/
+                /*處理分頁問題 _start*/
+                $total = $DB->count(); // 計算資料庫的總筆數
+                $div = 3;   //每一頁要放3筆資料
+                $pages = ceil($total / $div);   // 總共需要幾頁
+                $now = $_GET['p'] ?? 1; //目前頁面，透過$_GET[]的方式傳值=1
+                $start = ($now - 1) * $div; //開始的值
+                $rows = $DB->all("limit $start,$div");
+                /*處理分頁問題 _end*/  
                  foreach ($rows as $row) {  /* <!-- 將資料顯示在畫面上 --> */
 
                 ?>
