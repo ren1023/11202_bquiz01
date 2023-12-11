@@ -107,15 +107,18 @@ class DB{
         } 
     }
 }
+
 function dd($array)
 {
     echo "<pre>";
     print_r($array);
     echo "</pre>";
 }
+
 function to($url){
     header("location:$url");
 }
+
 $Title=new DB('titles');
 $Total=new DB('total');
 $Ad=new DB('ad');
@@ -125,6 +128,7 @@ $Image = new DB('image');
 $News = new DB('news');
 $Admin = new DB('admin');
 $Menu = new DB('menu');
+
 if(isset($_GET['do'])){
     $DB=${ucfirst($_GET['do'])};
 }else{

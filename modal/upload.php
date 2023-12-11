@@ -16,7 +16,7 @@ switch ($_GET['table']) {
 <form action="./api/update.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <?php
+            <?php 
             switch ($_GET['table']) {
                 case "title":
                     echo "<td>標題區圖片</td>";
