@@ -9,17 +9,16 @@
                     <td width="10%">刪除</td>
                     <td>更換動畫</td>
                 </tr>
-                <!-- 將資料顯示在畫面上 -->
                 <?php
                 // $DB=${ucfirst($do)};改寫在db.php裡
                 // $rows = $DB->all();
-                $total = $DB->count();
+                $total = $DB->count(); /*處理分頁問題 _start*/
                 $div = 3;
                 $pages = ceil($total / $div);
                 $now = $_GET['p'] ?? 1;
                 $start = ($now - 1) * $div;
-                $rows = $DB->all("limit $start,$div");  
-                foreach ($rows as $row) {
+                $rows = $DB->all("limit $start,$div");  /*處理分頁問題 _end*/
+                 foreach ($rows as $row) {  /* <!-- 將資料顯示在畫面上 --> */
 
                 ?>
                     <tr>
