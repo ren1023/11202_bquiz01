@@ -10,7 +10,6 @@
     }
 
 
-
     ?>
     </marquee>
     <div style="height:32px; display:block;"></div>

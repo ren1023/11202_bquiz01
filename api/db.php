@@ -146,5 +146,6 @@ $Title=new DB('titles');
 $Total=new DB('total');
 $Ad=new DB('ad');
 $Bottom = new DB('bottom');
+$Mvim = new DB('Mvim');
 
 ?>
