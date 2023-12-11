@@ -10,6 +10,12 @@ $DB = ${ucfirst($table)};
 // 從 $_POST 數組中移除 'table' 鍵，因為它不是要保存到資料庫的數據
 unset($_POST['table']);
 
+if(isset($_POST['id'])){
+    foreach($_POST['id'] as $id ){
+        $_POST['text'][$id]=[''];
+    }
+}
+
 // 遍歷提交的 'text' 數組
 foreach ($_POST['text'] as $id => $text) {
     // 檢查是否有任何項目被標記為刪除
@@ -19,9 +25,11 @@ foreach ($_POST['text'] as $id => $text) {
     } else {
         // 否則，獲取資料庫中對應 ID 的行
         $row = $DB->find($id);
-
-        // 更新該行的 'text' 值
-        $row['text'] = $text;
+        if(isset($row['text'])){
+            // 更新該行的 'text' 值
+            $row['text'] = $text;
+        }
+        
 
         // 如果表名為 'title'，則單選按鈕的處理方式不同
         if ($table == 'title') {
