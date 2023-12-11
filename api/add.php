@@ -10,17 +10,31 @@ include_once "db.php";
 $DB=${ucfirst($_POST['table'])};
 $table=$_POST['table'];
 
+switch($table){
+    case "admin":
+        unset($_POST['pw2']);
+        break;
+}
+
 if(isset($_FILES['img']['tmp_name'])){
     move_uploaded_file($_FILES['img']['tmp_name'],"../img/".$_FILES['img']['name']);
     $_POST['img']=$_FILES['img']['name'];
 
 }
 
-$_POST['table']=($table=='title')?0:1;
+if($table != 'admin'){
+
+    $_POST['table']=($table=='title')?0:1;
+}
+
+
+
+
 
 // 從post來有多了一個欄位！會與資料表對不上，故要將hidden的table的這個欄位刪除(unset)。
 unset($_POST['table']);
 $DB->save($_POST);
+
 
 // echo "test";
 // exit();
