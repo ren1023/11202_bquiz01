@@ -117,12 +117,14 @@ class DB
         }
     }
 }
+
 function dd($array)
 {
     echo "<pre>";
     print_r($array);
     echo "</pre>";
 }
+
 function to($url)
 {
     header("location:$url");
@@ -130,6 +132,7 @@ function to($url)
 $Title = new DB('titles');
 $Total = new DB('total');
 $Ad = new DB('ad');
+
 $Bottom = new DB('bottom');
 $Mvim = new DB('mvim');
 $Image = new DB('image');
@@ -137,11 +140,13 @@ $News = new DB('news');
 $Admin = new DB('admin');
 $Menu = new DB('menu');
 
+
 //可行的方法一
 if(isset($_GET['do'])){ //若 $_GET['do]有存在
     if(isset(${ucfirst($_GET['do'])})){ //若 $_GET['do]轉完大寫後，也存在
         $DB=${ucfirst($_GET['do'])};
     }
+
 }else{
     $DB=$Title;
 }
