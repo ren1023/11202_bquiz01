@@ -137,7 +137,7 @@ $News = new DB('news');
 $Admin = new DB('admin');
 $Menu = new DB('menu');
 
-/*可行的方法一
+//可行的方法一
 if(isset($_GET['do'])){ //若 $_GET['do]有存在
     if(isset(${ucfirst($_GET['do'])})){ //若 $_GET['do]轉完大寫後，也存在
         $DB=${ucfirst($_GET['do'])};
@@ -145,7 +145,7 @@ if(isset($_GET['do'])){ //若 $_GET['do]有存在
 }else{
     $DB=$Title;
 }
-*/
+
 
 
 /*可行的方法二
