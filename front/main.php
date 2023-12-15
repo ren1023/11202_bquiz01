@@ -52,6 +52,14 @@
 
     <div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
         <span class="t botli">最新消息區
+            <?php
+            if($News->count(['sh'=> 1])>5){
+               echo "<a href='' style='float: right;'>More...</a>;";
+            }
+
+            ?>
+
+           
         </span>
         <ul class="ssaa" style="list-style-type:decimal;">
             <?php
@@ -59,19 +67,24 @@
             foreach ($news as $n) {
                 echo "<li>";
                 echo mb_substr($n['text'], 0, 20);
+                echo "<div class='all' style='display:none'>";
+                echo $n['text'];
+                echo "</div>";
                 echo "...</li>";
             }
             ?>
         </ul>
-        <div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+        <div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
+
+    </div>
         <script>
-            $(".ssaa li").hover(
+            $(".ssaa li").hover( //.ssaa下一層li發生mouse移上去時去執行以下
                 function() {
-                    $("#altt").html("<pre>" + $(this).children(".all").html() + "</pre>")
-                    $("#altt").show()
+                    $("#altt").html("<pre>" + $(this).children(".all").html() + "</pre>")   //this指的是hover這個事件，當下的這個元件<li>的下一層的容器，.html(), 表示呈現此元素的所有內容
+                    $("#altt").show() //這是舊版才要寫的
                 }
             )
-            $(".ssaa li").mouseout(
+            $(".ssaa li").mouseout( //當我mouse移出的時侯隱藏
                 function() {
                     $("#altt").hide()
                 }
