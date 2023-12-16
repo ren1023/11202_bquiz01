@@ -10,27 +10,24 @@
                 </tr>
                 <!-- 將資料顯示在畫面上 -->
                 <?php
-                $total = $DB->count(); //從db撈出總筆數
+                $total = $DB->count();
                 $div = 5; //每5筆，換一頁
                 $pages = ceil($total / $div);   //共需多少頁
                 $now = $_GET['p'] ?? 1; //如果值不存在，則預設為第1頁
                 $start = ($now - 1) * $div;  //計算開始值
-                $rows = $DB->all(" limit $start,$div");  //limit前建議有空白，第一頁：從第0筆開始，印0,1,2,3,4共5筆資料筆資料；第2頁時，從第5筆開始，印5,6,7,8,9共5筆資料
+                $rows = $DB->all(" limit $start,$div");  //limit前建議有空白
+                // echo print_r($rows);
                 foreach ($rows as $row) {
-                ?>
-                    <tr>
-                        <td>
-                            <textarea type="text" name="text[]" style="width:90%;height:60px"><?= $row['text'];?></textarea>
-                            <input type="hidden" name="id[]" value="<?=$row['id'];?>">
-                        </td>
-                        <td>
-                            <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=($row['sh']==1)?'checked':'';?>>
-                        </td>
-                        <td>
-                            <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
-                        </td>
-                    </tr>
-                <?php
+                    // echo "{$row['id']}";
+                    // echo "{$row['text']}";
+                    echo "這是key".$key;
+                    echo "<hr>";
+                    echo "這是id：".$row['id']."<br>";
+                    echo "這是text：".$row['text']."<br>";
+                    echo "這是sh：".$row['sh']."<br>";
+                    // echo "這是value".$row['id'];
+                    echo "<hr>";
+
                 }
                 ?>
             </tbody>
