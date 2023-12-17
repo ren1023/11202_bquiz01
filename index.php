@@ -22,9 +22,9 @@
 	<iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
 		<?php
-		$title = $Title->find(['sh' => 1]);
+		$title = $Title->find(['sh' => 1]);  //顯示網站標題管理圖示，撈資料庫中，sh欄位等於1的傎
 		?>
-		<a title="<?= $title['text']; ?>" href="index.php">
+		<a title="<?= $title['text']; ?>" href="index.php"> <!-- 顯示替代文字，並超連結回首頁 -->
 			<div class="ti" style="background:url(&#39;./img/<?= $title['img']; ?>&#39;); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
@@ -36,13 +36,13 @@
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :
-						<?= $Total->find(1)['total']; ?></span>
+						<?= $Total->find(1)['total']; ?></span>  <!-- 去資料庫撈取id=1的total欄位資料 -->
 				</div>
 			</div>
 
 			<?php
 
-			$do = $_GET['do'] ?? 'main';
+			$do = $_GET['do'] ?? 'main'; 
 			$file = "./front/{$do}.php";
 			if (file_exists($file)) {
 				include $file;

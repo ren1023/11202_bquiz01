@@ -20,7 +20,10 @@ if($table != 'admin'){  //當table不等於'admin'時，才往下執行。
     $_POST['table']=($table=='title')?0:1;  //當table=title時，預設不顯示(0)。
 }
 unset($_POST['table']);// 從post來有多了一個欄位叫'table'！會與資料表對不上，故要將hidden的table的這個欄位刪除(unset)。
+
 $DB->save($_POST);
+echo $DB->save($_POST);
+exit();
 // echo "test";
 // exit();
 to("../back.php?do=$table");
