@@ -166,3 +166,10 @@ if (isset($_GET['do'])) {
     $DB = $Title;
 }
 */
+
+// 記錄進站人數
+if(!isset($_SESSION['visited'])) {//設定有進站的狀態，當visited不存在時
+    $Total->q("update `total` set `total`=`total`+1 where `id`=1");
+    $_SESSION['visited']=1;
+}
+?>
