@@ -25,7 +25,7 @@
 		<?php
 		$title = $Title->find(['sh' => 1]);  //顯示網站標題管理圖示，撈資料庫中，sh欄位等於1的傎
 		?>
-		<a title="<?=$title['text'];?>" href="index.php"> <!-- 顯示替代文字，並超連結回首頁 -->
+		<a title="<?= $title['text']; ?>" href="index.php"> <!-- 顯示替代文字，並超連結回首頁 -->
 			<div class="ti" style="background:url(&#39;./img/<?= $title['img']; ?>&#39;); background-size:cover;"></div><!--標題-->
 		</a>
 		<div id="ms">
@@ -34,29 +34,31 @@
 					<!--主選單放此-->
 					<span class="t botli">主選單區</span>
 					<?php
-					$mainmu=$Menu->all(['sh'=>1,'menu_id'=>0]);  // 撈出主選單且有顯示的
-					foreach($mainmu as $main){
+					$mainmu = $Menu->all(['sh' => 1, 'menu_id' => 0]);  // 撈出主選單且有顯示的
+					foreach ($mainmu as $main) {
 					?>
 
-					<div class='mainmu'>
-					<a href="<?=$main['href'];?>" style="color:#000; font-size:13px; text-decoration:none;"><?=$main['text'];?></a> <!-- do=>引入 ；?=>當前網頁-->
-						<?php
-						if($Menu->count(['menu_id'=>$main['id']])>0){
-							echo "<div class='mw'>";
-							$subs=$Menu->all(['menu_id'=>$main['id']]);
-							foreach($subs as $sub){
-								echo "<a href='{$sub['href']}'>";
-								echo "<div class='mainmu2'>";
-								echo $sub['text'];
+						<div class='mainmu'>
+							<a href="<?= $main['href']; ?>" style="color:#000; font-size:13px; text-decoration:none;">
+								<?= $main['text']; ?> <!-- 主選單超連結 -->
+							</a> 
+							<?php
+							if ($Menu->count(['menu_id' => $main['id']]) > 0) {  //如果men_id大於0，表示有次選單
+								echo "<div class='mw'>";
+								$subs = $Menu->all(['menu_id' => $main['id']]); //撈出次選單
+								foreach ($subs as $sub) { 
+									echo "<a href='{$sub['href']}'>";
+									echo "<div class='mainmu2'>";
+									echo $sub['text'];
+									echo "</div>";
+									echo "</a>";
+								}
 								echo "</div>";
-								echo "</a>";
 							}
-							echo "</div>";
-						}
-						?>
+							?>
 
-					</div>
-					</a>
+						</div>
+						</a>
 					<?php
 					}
 					?>
@@ -107,38 +109,42 @@
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
-					
+
 					<?php
-					 $imgs=$Image->all(['sh'=>1]);
+					$imgs = $Image->all(['sh' => 1]);
 					//  echo print_r($imgs);
 					//  exit();
 
-					 foreach($imgs as $idx => $img){
+					foreach ($imgs as $idx => $img) {
 					?>
-					<div id="ssaa<?=$idx;?>" class='im cent' >
-					<img src="./img/<?=$img['img'];?>" style="width:150px;height:103px;border:3px solid orange;margin:3px">
-					</div>
+						<div id="ssaa<?= $idx; ?>" class='im cent'>
+							<img src="./img/<?= $img['img']; ?>" style="width:150px;height:103px;border:3px solid orange;margin:3px">
+						</div>
 
-					<?php	
-					 }
+					<?php
+					}
 
-					?>	
+					?>
 					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
 
-					<script> //圖片輪播的功能
-						var nowpage=1, num =<?=$Image->count(['sh'=>1]);?>;/* 宣告變數 $nowpage 現在的頁數,$num 是所有的圖片數量 */
-						
+					<script>
+						//圖片輪播的功能
+						var nowpage = 1,
+							num = <?= $Image->count(['sh' => 1]); ?>; /* 宣告變數 $nowpage 現在的頁數,$num 是所有的圖片數量 */
+
 						function pp(x) { //function叫pp，帶一個參數x
 							var s, t; //宣告變數
-							if(x==1 && (nowpage-1) >=0) { //往上翻
-								nowpage--;}
-							if(x==2 && (nowpage+1) <= num * 1 - 3) {	//如果要換頁的話，一次換三張
-								nowpage++;}
+							if (x == 1 && (nowpage - 1) >= 0) { //往上翻
+								nowpage--;
+							}
+							if (x == 2 && (nowpage + 1) <= num * 1 - 3) { //如果要換頁的話，一次換三張
+								nowpage++;
+							}
 
-							$(".im").hide()	//.im這個class，畫面上所有的圖片都會隱藏
-							for(s = 0; s <= 2; s++) {  //此廻圈跑3次(0-2)，s是數字型態。
-								t = s * 1 + nowpage * 1;	//因為nowpage=1，pp(1)；所以t會是0+1=1,1+1=2,2+1=3。目的是為產生連續三個數字。
-								$("#ssaa" + t).show()	//id=22aa，t=字串，#ssaa1.show(),#ssaa2.show(),#ssaa3.show()在畫面上呈現3張圖
+							$(".im").hide() //.im這個class，畫面上所有的圖片都會隱藏
+							for (s = 0; s <= 2; s++) { //此廻圈跑3次(0-2)，s是數字型態。
+								t = s * 1 + nowpage * 1; //因為nowpage=1，pp(1)；所以t會是0+1=1,1+1=2,2+1=3。目的是為產生連續三個數字。
+								$("#ssaa" + t).show() //id=22aa，t=字串，#ssaa1.show(),#ssaa2.show(),#ssaa3.show()在畫面上呈現3張圖
 							}
 						}
 						pp(1)
@@ -148,8 +154,10 @@
 		</div>
 		<div style="clear:both;"></div>
 		<div style="width:1024px; left:0px; position:relative; background:#FC3; margin-top:4px; height:123px; display:block;">
-			<span class="t" style="line-height:123px;"><?=$Bottom->find(1)['bottom'];?></span>
+			<span class="t" style="line-height:123px;"><?= $Bottom->find(1)['bottom']; ?></span>
 		</div>
 	</div>
 
-</body></html>
+</body>
+
+</html>
