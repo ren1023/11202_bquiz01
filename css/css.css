@@ -75,11 +75,13 @@ body
 	line-height:30px;
 	padding:2px 10px 2px 10px;
 	margin:7px 1px 7px 1px;
+	height:29px; /*調整主選單高度*/
 }
 .mainmu:hover
 {
 	background:url(../icon/menu2.fw.png) center no-repeat;
 	background-size:cover;
+	z-index:8; /*hover時變更主選單層級及優先級*/
 }
 .mainmu2
 {
@@ -90,11 +92,18 @@ body
 	line-height:30px;
 	padding:2px 10px 2px 10px;
 	margin:7px 1px 7px 1px;
+	z-index:9; /* 讓次選單在主選單上方*/
 }
 .mainmu2:hover
 {
 	background:url(../icon/menu4.fw.png) center no-repeat;
 	background-size:cover;
+}
+.mw{
+	position: relative; /*與主選單的位置關聯*/
+	left:100px; /*與左邊距100px*/
+	top:-20px; /*向上移-20px*/
+	display: none; /*設為不顯示*/
 }
 #lf
 {

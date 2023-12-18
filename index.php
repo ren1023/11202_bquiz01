@@ -3,11 +3,13 @@
 <!-- saved from url=(0040)http://127.0.0.1/test/exercise/collage/? -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<title>卓越科技大學校園資訊系統</title>
-	<link href="./css/css.css" rel="stylesheet" type="text/css">
+	<!-- <link href="./css/css.css" rel="stylesheet" type="text/css"> -->
+	<link rel="stylesheet" href="./css/css.css">
 	<script src="./js/jquery-1.9.1.min.js"></script>
 	<script src="./js/js.js"></script>
 </head>
@@ -30,8 +32,36 @@
 			<div id="lf" style="float:left;">
 				<div id="menuput" class="dbor">
 					<!--主選單放此-->
-
 					<span class="t botli">主選單區</span>
+					<?php
+					$mainmu=$Menu->all(['sh'=>1,'menu_id'=>0]);  // 撈出主選單且有顯示的
+					foreach($mainmu as $main){
+					?>
+
+					<div class='mainmu'>
+					<a href="<?=$main['href'];?>" style="color:#000; font-size:13px; text-decoration:none;"><?=$main['text'];?></a> <!-- do=>引入 ；?=>當前網頁-->
+						<?php
+						if($Menu->count(['menu_id'=>$main['id']])>0){
+							echo "<div class='mw'>";
+							$subs=$Menu->all(['menu_id'=>$main['id']]);
+							foreach($subs as $sub){
+								echo "<a href='{$sub['href']}'>";
+								echo "<div class='mainmu2'>";
+								echo $sub['text'];
+								echo "</div>";
+								echo "</a>";
+							}
+							echo "</div>";
+						}
+						?>
+
+					</div>
+					</a>
+					<?php
+					}
+					?>
+
+
 				</div>
 				<div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
 					<span class="t">進站總人數 :

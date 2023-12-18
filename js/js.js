@@ -1,9 +1,9 @@
 // JavaScript Document
 $(document).ready(function(e) {
-    $(".mainmu").mouseover(
+    $(".mainmu").mouseover(  //hover：mouseover(滑進來)+mouseout(滑出去)
 		function()
 		{
-			$(this).children(".mw").stop().show()
+			$(this).children(".mw").stop().show()	//滑鼠移進來時，這個的下一個，會呈現
 		}
 	)
 	$(".mainmu").mouseout(
