@@ -42,7 +42,4 @@ function more(){
     $("#sub").append(item); //當id=sub時，就去執行 let item，新增 td的欄位給使用者填，新增次選單的內容
 
 }
-
-
-
 </script>
