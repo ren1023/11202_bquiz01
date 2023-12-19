@@ -8,11 +8,10 @@
     <div style="width:100%; padding:2px; height:290px;">
         <div id="mwww" loop="true" style="width:100%; height:100%;">
             <div style="width:99%; height:100%; position:relative;" class="cent">
-                沒有資料(放動畫圖片)
+            沒有資料(放動畫圖片)
                 <!-- <img src="./img/01C01.gif" alt=""> -->
             </div>
             <!-- <embed loop=true src='"./img/01C01.gif" + lin[now] + "' style='width:99%; height:100%;'></embed> -->
-
         </div>
     </div>
     <script>
@@ -56,10 +55,7 @@
             if ($News->count(['sh' => 1]) > 5) {
                 echo "<a href='?do=news' style='float: right;'>More...</a>;";
             }
-
             ?>
-
-
         </span>
         <ul class="ssaa" style="list-style-type:decimal;">
             <?php
