@@ -18,7 +18,7 @@ if(isset($_POST['add_text'])){
             $data['text']=$text;
             $data['href']=$_POST['add_href'][$idx];
             $data['sh']=1;
-            $data['menu_id']=$_POST['menu_id'][$idx];
+            $data['menu_id']=$_POST['menu_id'];
             $Menu->save($data);
 
         }
