@@ -18,7 +18,7 @@
                 $pages = ceil($total / $div);   // 總共需要幾頁
                 $now = $_GET['p'] ?? 1; //目前頁面，透過$_GET[]的方式傳值=1
                 $start = ($now - 1) * $div; //開始的值
-                $rows = $DB->all("limit $start,$div");
+                $rows = $DB->all("limit $start,$div");//每次撈從$start開始撈，撈$div=3筆
                 /*處理分頁問題 _end*/  
                  foreach ($rows as $row) {  /* <!-- 將資料顯示在畫面上 --> */
 
@@ -49,15 +49,15 @@
         <div class="cent">
             <?php
             if($now>1){
-                $prev=$now-1;
+                $prev=$now-1;//上一頁等於現在的頁數-1
                 echo " <a href='?do=$do&p=$prev'><</a> ";
             }
             for ($i = 1; $i <= $pages; $i++) {
-                $fontsize = ($now == $i) ? '24px' : '16px';
-                echo "<a href='?do=$do&p=$i' style='font-size:$fontsize'> $i <a/>";
+                $fontsize = ($now == $i) ? '24px' : '16px'; //當前的頁數等於i，字型變為24px
+                echo "<a href='?do=$do&p=$i' style='font-size:$fontsize'> $i <a/>";//印出超連結，並將字型變大
             }
             if($now<$pages){
-                $next=$now+1;
+                $next=$now+1; //下一頁等於現在的頁數+1
                 echo " <a href='?do=$do&p=$next'> > </a> ";
             }
             ?>
