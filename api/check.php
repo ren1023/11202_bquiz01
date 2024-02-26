@@ -1,12 +1,9 @@
 <?php
 include_once "db.php";
 
-// " ' or 1=1; "=> SQL injection;
-// 解決 sql injection，將由表單接收來的資料，進行編碼後
-$acc=htmlspecialchars($_POST['acc']);
-$pw=htmlspecialchars($_POST['pw']);
-if($Admin->count(['acc'=>$acc,'pw'=>$pw])>0){
-    $_SESSION['login']=$acc;
+
+if($Admin->count(['acc'=> $_POST['acc'],'pw'=>$_POST['pw']])>0){
+       $_SESSION['login']=$_POST['acc'];
     to("../back.php");
 
 }else{
