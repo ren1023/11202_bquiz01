@@ -14,8 +14,10 @@ switch($table){
 if(isset($_FILES['img']['tmp_name'])){  //當有檔案時，則往下執行。
     move_uploaded_file($_FILES['img']['tmp_name'],"../img/".$_FILES['img']['name']);    //將檔案移到../img/這個資料夾
     $_POST['img']=$_FILES['img']['name'];   //將檔案名稱assign給$_POST['img']。
-
+}else{
+    $_POST['pw']=md5($_POST['pw']);
 }
+
 if($table != 'admin'){  //當table不等於'admin'時，才往下執行。
     $_POST['table']=($table=='title')?0:1;  //當table=title時，預設不顯示(0)。
 }
