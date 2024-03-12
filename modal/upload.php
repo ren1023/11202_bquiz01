@@ -31,18 +31,6 @@ switch ($_GET['table']) {
             ?>
             <td><input type="file" name="img" id=""></td>
         </tr>
-        <tr>
-            <?php
-            switch ($_GET['table']) {
-                case "title":
-                    echo "<td>標題區替代文字</td>";
-                    echo "<td>";
-                    echo '<input type="text" name="text" id="">';
-                    echo "</td>";
-                    break;
-            }
-            ?>
-        </tr>
 
     </table>
 
